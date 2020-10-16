@@ -15,4 +15,4 @@ class TaskViewSet(viewsets.ModelViewSet):
     """Представление для задания."""
 
     queryset = Task.objects.all()
-    serializer = TaskSerializer
+    serializer_class = TaskSerializer

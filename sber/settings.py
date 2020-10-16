@@ -157,3 +157,6 @@ SWAGGER_SETTINGS = {
     },
     'USE_SESSION_AUTH': False
 }
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())

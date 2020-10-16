@@ -1,8 +1,16 @@
 from django.core.validators import MinValueValidator
 from django.db import models
 
-from education.models import Tag
-from education.models.reference_book import VISIBILITY_LEVELS, SUBJECTS, STEPS
+from ..models.reference_book import VISIBILITY_LEVELS, SUBJECTS, STEPS
+
+
+class Tag(models.Model):
+    """Модель тэга."""
+
+    key_word = models.CharField(
+        max_length=64,
+        verbose_name='Ключевое слово'
+    )
 
 
 class Module(models.Model):

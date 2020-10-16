@@ -15,4 +15,4 @@ class LessonViewSet(viewsets.ModelViewSet):
     """Представление для урока."""
 
     queryset = Lesson.objects.all()
-    serializer = LessonSerializer
+    serializer_class = LessonSerializer

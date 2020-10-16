@@ -3,7 +3,7 @@ from rest_framework import serializers, viewsets
 from ..models import Lesson
 
 
-class LessonSerializer(serializers.ModelSeializer):
+class LessonSerializer(serializers.ModelSerializer):
     """Сериализатор для урока."""
 
     class Meta:

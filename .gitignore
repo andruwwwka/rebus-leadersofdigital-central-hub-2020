@@ -17,3 +17,6 @@ db.sqlite3
 
 # Virtualenv environment
 venv
+env
+
+.gitignore

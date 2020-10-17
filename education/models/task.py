@@ -130,4 +130,5 @@ class Task(models.Model):
         on_delete=SET_NULL,
         null=True,
         verbose_name='Цель/Уровень',
+        related_name='tasks',
     )

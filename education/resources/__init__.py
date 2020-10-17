@@ -1,3 +1,5 @@
-from .lesson import LessonViewSet  # noqa: F401
-from .module import ModuleViewSet  # noqa: F401
-from .task import TaskViewSet  # noqa: F401
+from .lesson import LessonViewSet
+from .level import LevelViewSet
+from .module import ModuleViewSet
+from .tag import TagViewSet
+from .task import TaskViewSet

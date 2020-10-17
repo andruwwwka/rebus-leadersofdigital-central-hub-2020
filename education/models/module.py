@@ -1,5 +1,6 @@
-from django.core.validators import MinValueValidator
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
+from django.db.models import SET_NULL
 
 from .reference_book import VISIBILITY_LEVELS, SUBJECTS, STEPS, STATUSES
 from .tag import Tag
@@ -50,7 +51,7 @@ class Module(models.Model):
     )
 
     work_hours = models.PositiveIntegerField(
-        validators=[MinValueValidator(1)],
+        validators=[MinValueValidator(1), MaxValueValidator(24)],
         verbose_name='Трудоемкость',
     )
 
@@ -64,26 +65,31 @@ class Module(models.Model):
 
     general_concept = models.TextField(
         blank=True,
+        null=True,
         verbose_name='Общий замысел модуля',
     )
 
     typical_distribution = models.TextField(
         blank=True,
+        null=True,
         verbose_name='Типовое распределение заданий по урокам',
     )
 
     possible_difficulties = models.TextField(
         blank=True,
+        null=True,
         verbose_name='Возможные трудности, ложные представления и способы их преодоления',
     )
 
     cover_picture = models.FileField(
         blank=True,
+        null=True,
         verbose_name='Обложка модуля',
     )
 
     small_picture = models.FileField(
         blank=True,
+        null=True,
         verbose_name='Картинка для списка',
     )
 
@@ -94,6 +100,7 @@ class Module(models.Model):
 
     comment = models.TextField(
         blank=True,
+        null=True,
         verbose_name='Комментарий'
     )
 
@@ -102,4 +109,11 @@ class Module(models.Model):
         choices=STATUSES,
         default='draft',
         verbose_name='Статус модуля',
+    )
+
+    owner = models.ForeignKey(
+        'users.Profile',
+        on_delete=SET_NULL,
+        null=True,
+        verbose_name='Владелец модуля',
     )

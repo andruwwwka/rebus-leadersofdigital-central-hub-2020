@@ -11,6 +11,7 @@ class Level(models.Model):
         'Module',
         on_delete=CASCADE,
         verbose_name='Модули',
+        related_name='levels',
     )
 
     level_step = models.CharField(

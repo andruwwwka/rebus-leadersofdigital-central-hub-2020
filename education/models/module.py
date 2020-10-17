@@ -1,16 +1,8 @@
 from django.core.validators import MinValueValidator
 from django.db import models
 
-from ..models.reference_book import VISIBILITY_LEVELS, SUBJECTS, STEPS
-
-
-class Tag(models.Model):
-    """Модель тэга."""
-
-    key_word = models.CharField(
-        max_length=64,
-        verbose_name='Ключевое слово'
-    )
+from .reference_book import VISIBILITY_LEVELS, SUBJECTS, STEPS, STATUSES
+from .tag import Tag
 
 
 class Module(models.Model):
@@ -25,11 +17,10 @@ class Module(models.Model):
 
     name = models.CharField(
         max_length=254,
-        min_length=1,
         verbose_name='Наименование модуля',
     )
 
-    version = models.BigAutoField(
+    version = models.IntegerField(
         verbose_name='Версия модуля',
     )
 
@@ -94,4 +85,21 @@ class Module(models.Model):
     small_picture = models.FileField(
         blank=True,
         verbose_name='Картинка для списка',
+    )
+
+    is_active_version = models.BooleanField(
+        default=True,
+        verbose_name='Текушая версия активна',
+    )
+
+    comment = models.TextField(
+        blank=True,
+        verbose_name='Комментарий'
+    )
+
+    status = models.CharField(
+        max_length=32,
+        choices=STATUSES,
+        default='draft',
+        verbose_name='Статус модуля',
     )

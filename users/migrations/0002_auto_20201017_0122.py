@@ -13,7 +13,6 @@ NEW_USERS = [
 
 def create_users(apps, schema_editor):
     """Создание пользователей и их групп."""
-    #Profile = apps.get_model('users', 'Profile')
     Group = apps.get_model('auth', 'Group')
     for email, password, group in NEW_USERS:
         group, _ = Group.objects.get_or_create(

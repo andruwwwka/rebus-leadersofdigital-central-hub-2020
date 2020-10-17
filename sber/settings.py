@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'health',
     'education',
     'verification',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -115,6 +116,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'users.Profile'
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
@@ -137,14 +140,14 @@ STATIC_URL = '/static/'
 
 # REST Framework settings
 
-# REST_FRAMEWORK = {
-#     'DEFAULT_PERMISSION_CLASSES': (
-#         'rest_framework.permissions.IsAuthenticated',
-#         ),
-#     'DEFAULT_AUTHENTICATION_CLASSES': (
-#         'users.backends.JWTAuthentication',
-#         )
-# }
+REST_FRAMEWORK = {
+    # 'DEFAULT_PERMISSION_CLASSES': (
+    #    'rest_framework.permissions.IsAuthenticated',
+    #     ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'users.backends.JWTAuthentication',
+        )
+}
 
 
 # Swagger settings

@@ -7,7 +7,7 @@ class ModuleSerializer(serializers.ModelSerializer):
     """Сериализатор для образовательного модуля."""
 
     class Meta:
-        models = Module
+        model = Module
         fields = '__all__'
 
 

@@ -1,7 +1,7 @@
 from django.contrib.postgres.fields import ArrayField
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
-from django.db.models import CASCADE
+from django.db.models import SET_NULL
 
 from .reference_book import VISIBILITY_LEVELS, TASK_TYPES, CHECK_TYPES, WORK_TYPES, WAYS, SOFT_SKILLS, \
     LICENCE_TYPES
@@ -126,7 +126,7 @@ class Task(models.Model):
 
     level = models.ForeignKey(
         'Level',
-        on_delete=CASCADE,
-        blank=True,
+        on_delete=SET_NULL,
+        null=True,
         verbose_name='Цель/Уровень',
     )

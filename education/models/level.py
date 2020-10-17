@@ -9,7 +9,6 @@ class Level(models.Model):
 
     module = models.ForeignKey(
         'Module',
-        blank=True,
         on_delete=CASCADE,
         verbose_name='Модули',
     )

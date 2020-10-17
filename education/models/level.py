@@ -1,15 +1,15 @@
 from django.db import models
+from django.db.models import CASCADE
 
-from .module import Module
 from .reference_book import LEVEL_STEPS
 
 
 class Level(models.Model):
     """Модель уровня."""
 
-    module = models.ManyToManyField(
-        Module,
-        related_name='levels',
+    module = models.ForeignKey(
+        'Module',
+        on_delete=CASCADE,
         verbose_name='Модули',
     )
 
@@ -27,4 +27,3 @@ class Level(models.Model):
     example = models.TextField(
         verbose_name='Пример достижения цели (Я могу…)',
     )
-

@@ -15,4 +15,4 @@ class ModuleViewSet(viewsets.ModelViewSet):
     """Представление для образовательного модуля."""
 
     queryset = Module.objects.all()
-    serializer = ModuleSerializer
+    serializer_class = ModuleSerializer

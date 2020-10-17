@@ -15,4 +15,4 @@ class LevelViewSet(viewsets.ModelViewSet):
     """Представление для уровня."""
 
     queryset = Level.objects.all()
-    serializer = LevelSerializer
+    serializer_class = LevelSerializer

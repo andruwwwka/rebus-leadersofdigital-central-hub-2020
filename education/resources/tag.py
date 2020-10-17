@@ -15,4 +15,4 @@ class TagViewSet(viewsets.ModelViewSet):
     """Представление для тегов."""
 
     queryset = Tag.objects.all()
-    serializer = TagSerializer
+    serializer_class = TagSerializer

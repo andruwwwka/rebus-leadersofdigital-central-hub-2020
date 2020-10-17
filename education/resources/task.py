@@ -38,9 +38,9 @@ class TaskViewSet(viewsets.ModelViewSet):
         bad_words = []
         for field in fields_for_check:
             ban_list = BanContentCheck(request.data[field])
-            # bad_word = ObsceneWordCheck(request.data[field])
+            bad_word = ObsceneWordCheck(request.data[field])
             bad_content.append({field: ban_list.check_content()})
-            # bad_words.append({field: bad_word.check_content()})
+            bad_words.append({field: bad_word.check_content()})
         return Response({
             'bad_content': bad_content,
             'bad_words': bad_words

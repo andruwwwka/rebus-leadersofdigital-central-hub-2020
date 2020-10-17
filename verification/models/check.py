@@ -25,8 +25,8 @@ class ObsceneWordCheck(object):
 
     def check_content(self):
         clear_text = ''.join([t for t in self.checked_text if t not in set(string.punctuation)])
-        ban_list = ObsceneWord.objects.values('value')
+        ban_list = ObsceneWord.objects.values_list("value", flat=True)
         for word in clear_text.split():
-            if word.lower() in [ban['value'] for ban in ban_list]:
+            if word.lower() in ban_list:
                 return "НАЙДЕНА НЕЦЕНЗУРНАЯ ЛЕКСИКА"
         return "нецензурная лексика не найдена"

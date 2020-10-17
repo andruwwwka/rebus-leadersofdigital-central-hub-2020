@@ -4,6 +4,7 @@ from ..models import ObsceneWord
 
 
 class ObsceneWordSerializer(serializers.ModelSerializer):
+    """Сериализатор для нецензурных слов."""
 
     class Meta:
         model = ObsceneWord
@@ -11,6 +12,7 @@ class ObsceneWordSerializer(serializers.ModelSerializer):
 
 
 class ObsceneWordViewSet(viewsets.ModelViewSet):
+    """Представление для нецензурных слов."""
 
     queryset = ObsceneWord.objects.all()
     serializer_class = ObsceneWordSerializer

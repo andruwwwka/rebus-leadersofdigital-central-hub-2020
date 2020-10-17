@@ -1,1 +1,2 @@
-from .obscene_word import ObsceneWordViewSet  # noqa: F401
+from .ban_content import BanContentViewSet
+from .obscene_word import ObsceneWordViewSet

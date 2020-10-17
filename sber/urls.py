@@ -33,6 +33,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/education/', include('education.urls')),
     path('api/health/', include('health.urls')),
+    path('api/users/', include('users.urls')),
     path('api/verification/', include('verification.urls')),
     path(
         '',

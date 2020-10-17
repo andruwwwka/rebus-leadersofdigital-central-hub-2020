@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'drf_yasg2',
+    'storages',
     'health',
     'education',
     'verification',
@@ -165,5 +166,17 @@ SWAGGER_SETTINGS = {
     'USE_SESSION_AUTH': False
 }
 
+
 # Activate Django-Heroku.
 django_heroku.settings(locals())
+
+
+# S3 storage settings
+AWS_S3_ACCESS_KEY_ID = os.environ.get('AWS_S3_ACCESS_KEY_ID', '')
+AWS_S3_SECRET_ACCESS_KEY = os.environ.get('AWS_S3_SECRET_ACCESS_KEY', '')
+AWS_STORAGE_BUCKET_NAME = 'sber-class-media'
+AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+DEFAULT_FILE_STORAGE = 'core.storage_backends.MediaStorage'

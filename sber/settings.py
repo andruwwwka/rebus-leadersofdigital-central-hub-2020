@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'drf_yasg2',
     'health',
     'education',
+    'verification',
 ]
 
 MIDDLEWARE = [

@@ -1,4 +1,5 @@
 from rest_framework import serializers, viewsets
+from rest_framework.decorators import action
 
 from ..models import Task
 
@@ -16,3 +17,7 @@ class TaskViewSet(viewsets.ModelViewSet):
 
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
+
+    @action(methods=['post'], detail=True)
+    def кrun_checks(self, request, *args, **kwargs):
+        task = self.get_object()

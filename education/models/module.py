@@ -23,6 +23,8 @@ class Module(models.Model):
 
     version = models.IntegerField(
         verbose_name='Версия модуля',
+        blank=True,
+        null=True,
     )
 
     tags = models.ManyToManyField(
@@ -36,6 +38,8 @@ class Module(models.Model):
         max_length=128,
         choices=SUBJECTS,
         verbose_name='Предмет',
+        blank=True,
+        null=True,
     )
 
     step = models.CharField(

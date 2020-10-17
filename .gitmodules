@@ -1,4 +1,3 @@
-[submodule "ui"]
-    path = ui
-    url = https://github.com/ilya-pro/rebus-2020-10-leadersofdigital-ui
-    branch = master
+[submodule "rebus-2020-10-leadersofdigital-ui"]
+	path = rebus-2020-10-leadersofdigital-ui
+	url = https://github.com/ilya-pro/rebus-2020-10-leadersofdigital-ui

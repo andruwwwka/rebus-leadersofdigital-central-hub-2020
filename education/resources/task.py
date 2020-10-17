@@ -2,8 +2,8 @@ from rest_framework import serializers, viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
-from verification.models.check import Check
 from ..models import Task
+from verification.services import ValidatorRunner
 
 
 class TaskSerializer(serializers.ModelSerializer):
@@ -33,8 +33,8 @@ class TaskViewSet(viewsets.ModelViewSet):
     @action(methods=['post'], detail=False)
     def run_checks(self, request, *args, **kwargs):
         fields_for_check = ('name', 'resources', 'info_for_expert', 'info_for_student', 'info_for_teacher')
+        runner = ValidatorRunner()
         result = {}
         for field in fields_for_check:
-            checks = Check(request.data[field])
-            result.update({field: checks.run_checks()})
+            result[field] = runner.run(request.data[field])
         return Response(result, status=200)

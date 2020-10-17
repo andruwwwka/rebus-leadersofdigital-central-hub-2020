@@ -112,6 +112,7 @@ class Task(models.Model):
 
     comment = models.TextField(
         blank=True,
+        null=True,
         verbose_name='Комментарий'
     )
 

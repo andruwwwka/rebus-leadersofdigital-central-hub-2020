@@ -20,6 +20,7 @@ class LevelNestedSerilizer(serializers.ModelSerializer):
     class Meta:
         model = Level
         fields = (
+            'id',
             'level_step',
             'target',
             'example',

@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_yasg2',
     'storages',
+    'core',
     'health',
     'education',
     'verification',

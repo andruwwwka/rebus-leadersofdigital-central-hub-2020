@@ -3,6 +3,7 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 
 from ..models import Task
+from verification.services import ValidatorRunner
 
 
 class TaskSerializer(serializers.ModelSerializer):
@@ -28,3 +29,12 @@ class TaskViewSet(viewsets.ModelViewSet):
             return self.get_paginated_response(serializer.data)
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
+
+    @action(methods=['post'], detail=False)
+    def run_checks(self, request, *args, **kwargs):
+        fields_for_check = ('name', 'resources', 'info_for_expert', 'info_for_student', 'info_for_teacher')
+        runner = ValidatorRunner()
+        result = {}
+        for field in fields_for_check:
+            result[field] = runner.run(request.data[field])
+        return Response(result, status=200)

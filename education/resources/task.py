@@ -30,11 +30,18 @@ class TaskViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
 
-    @action(methods=['post'], detail=False)
-    def run_checks(self, request, *args, **kwargs):
-        fields_for_check = ('name', 'resources', 'info_for_expert', 'info_for_student', 'info_for_teacher')
+    @action(methods=['post'], detail=True)
+    def run_checks(self, request, pk=None):
+        task = self.get_object()
+        fields_for_check = (
+            'name',
+            'resources',
+            'info_for_expert',
+            'info_for_student',
+            'info_for_teacher',
+        )
         runner = ValidatorRunner()
         result = {}
         for field in fields_for_check:
-            result[field] = runner.run(request.data[field])
+            result[field] = runner.run(getattr(task, field))
         return Response(result, status=200)

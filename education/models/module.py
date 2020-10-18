@@ -85,16 +85,18 @@ class Module(models.Model):
         verbose_name='Возможные трудности, ложные представления и способы их преодоления',
     )
 
-    cover_picture = models.FileField(
+    cover_picture = models.CharField(
         blank=True,
         null=True,
         verbose_name='Обложка модуля',
+        max_length=128,
     )
 
-    small_picture = models.FileField(
+    small_picture = models.CharField(
         blank=True,
         null=True,
         verbose_name='Картинка для списка',
+        max_length=128,
     )
 
     is_active_version = models.BooleanField(
